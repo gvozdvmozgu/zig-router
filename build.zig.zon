@@ -1,0 +1,7 @@
+.{
+    .name = .router,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.15.2",
+    .paths = .{""},
+    .fingerprint = 0x45d2f225a9c766b4,
+}
