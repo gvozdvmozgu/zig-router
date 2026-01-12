@@ -16,6 +16,14 @@ pub fn build(b: *std.Build) void {
         .root_module = router_module,
     });
 
+    const docs_install = b.addInstallDirectory(.{
+        .source_dir = lib.getEmittedDocs(),
+        .install_dir = .prefix,
+        .install_subdir = "docs",
+    });
+    const docs_step = b.step("docs", "Generate API docs");
+    docs_step.dependOn(&docs_install.step);
+
     const bench_match = b.addExecutable(.{
         .name = "bench-match",
         .root_module = b.createModule(.{
